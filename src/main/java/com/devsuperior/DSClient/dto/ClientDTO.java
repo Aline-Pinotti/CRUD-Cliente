@@ -1,39 +1,38 @@
-package com.devsuperior.DSClient.entities;
+package com.devsuperior.DSClient.dto;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import org.springframework.beans.BeanUtils;
 
-@Entity
-@Table(name = "tb_client")
-public class Client {
+import com.devsuperior.DSClient.entities.Client;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+
+public class ClientDTO {
     private Long id;
+    @NotBlank(message = "Campo obrigatório")
     private String name;
-    @Column(unique = true)
     private String cpf;
     private Double income;
+    @PastOrPresent(message = "A data não pode ser futura")
     private LocalDate birthDate;
     private Integer children;
 
-    public Client() {
+    public ClientDTO() {
     }
 
-    public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
+    public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.income = income;
         this.birthDate = birthDate;
         this.children = children;
+    }
+
+    public ClientDTO(Client entity) {
+        BeanUtils.copyProperties(entity, this);
     }
 
     public Long getId() {
@@ -82,27 +81,6 @@ public class Client {
 
     public void setChildren(Integer children) {
         this.children = children;
-    }
-
-    public Integer getAge() {
-        // TODO: incluir uma estrutura condicional pra validar se já fez aniversário...
-        return LocalDate.now().getYear() - birthDate.getYear();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-
-        Client other = (Client) o;
-        return Objects.equals(id, other.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
     }
 
 }
