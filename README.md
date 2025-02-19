@@ -45,22 +45,25 @@ Seu projeto deverá tratar as seguintes exceções:
 	- Nome: não pode ser vazio
 	- Data de nascimento: não pode ser data futura (dica: use @PastOrPresent)
 
-{c:red}**Atenção:**{/c} crie um novo projeto para este trabalho. Não é para simplesmente acrescentar a classe Client no projeto feitos nas aulas.
-{c:red}**Atenção:**{/c} lembre-se de que por padrão a JPA transforma nomes de atributos em camelCase para snake_case, como foi o caso do campo imgUrl das aulas, que no banco de dados tinha o nome img_url. Assim, o campo birthDate acima será criado no banco de dados como birth_date, então seu script SQL deverá seguir este padrão.
-{c:red}**Atenção:**{/c} cuidado para não salvar no seu projeto arquivos e pastas que não devem ser salvas no Git, tais como a pasta .metadata do Eclipse ou .idea do Intellij. 
+[!CAUTION]
+**Atenção:** crie um novo projeto para este trabalho. Não é para simplesmente acrescentar a classe Client no projeto feitos nas aulas.
+[!CAUTION]
+**Atenção:** lembre-se de que por padrão a JPA transforma nomes de atributos em camelCase para snake_case, como foi o caso do campo imgUrl das aulas, que no banco de dados tinha o nome img_url. Assim, o campo birthDate acima será criado no banco de dados como birth_date, então seu script SQL deverá seguir este padrão.
+[!CAUTION]
+**Atenção:** cuidado para não salvar no seu projeto arquivos e pastas que não devem ser salvas no Git, tais como a pasta .metadata do Eclipse ou .idea do Intellij. 
 
 ### Como o trabalho será corrigido?
 
-{c:gray} 1) Importação do projeto{/c}
+ 1) Importação do projeto
 O professor deverá ser capaz de fazer um simples clone do projeto Github, e importar e executar o mesmo na IDE sem necessidade de qualquer configuração especial diferente daquelas das aulas.
 
-{c:gray} 2) Testes manuais no Postman{/c}
+ 2) Testes manuais no Postman
 O professor já terá preparado em seu computador as requisições Postman abaixo. Todas elas deverão funcionar corretamente:
-{c:gray}Busca de cliente por id{/c}
+Busca de cliente por id
 `GET /clients/1`
-{c:gray}Busca paginada de clientes{/c}
+Busca paginada de clientes
 `GET /clients?page=0&size=6&sort=name`
-{c:gray}Inserção de novo cliente{/c}
+Inserção de novo cliente
 `POST /clients`
 ```JSON
 {
@@ -71,7 +74,7 @@ O professor já terá preparado em seu computador as requisições Postman abaix
  "children": 2
 }
 ```
-{c:gray}Atualização de cliente{/c}
+Atualização de cliente
 `PUT /clients/1`
 ```JSON
 {
@@ -82,7 +85,7 @@ O professor já terá preparado em seu computador as requisições Postman abaix
  "children": 2
 }
 ```
-{c:gray}Deleção de cliente{/c}
+Deleção de cliente
 `DELETE /clients/1`
 
 
